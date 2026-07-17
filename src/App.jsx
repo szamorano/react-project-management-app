@@ -12,6 +12,10 @@ function App() {
     tasks: [],
   });
 
+  const selectedProjectTasks = projectsState.tasks.filter(
+    (task) => task.projectId === projectsState.selectedProjectId,
+  );
+
   function handleAddTask(text) {
     setProjectsState((prevState) => {
       const taskId = Math.random();
@@ -101,7 +105,7 @@ function App() {
       onDelete={handleDeleteProject}
       onAddTask={handleAddTask}
       onDeleteTask={handleDeleteTask}
-      tasks={projectsState.tasks}
+      tasks={selectedProjectTasks}
     />
   );
 
